@@ -1,0 +1,13 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">Currency conversion</a>
+        </div>
+        <div class="navbar navbar-nav navbar-right">
+            <span class="navbar-text">USD: {{(!data.requests.fetching ? data.getConversionRate('USD', 'UAH').direct : 0)| currency:'UAH':'₴':'2.2-2'}} </span>
+            <p class="navbar-text">|</p>
+            <span class="navbar-text">EUR: {{(!data.requests.fetching ? data.getConversionRate('EUR', 'UAH').direct : 0)| currency:'UAH':'₴':'2.2-2'}} </span>
+            <button type="button" class="btn btn-default navbar-btn" style="margin-right: 1rex;" (click)="this.data.updateRates()">Update rates!</button>
+        </div>
+    </div>
+</nav>

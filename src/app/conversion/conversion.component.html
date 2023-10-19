@@ -1,0 +1,35 @@
+<form>
+    <div class="row" [formGroup]="form">
+        <div class="col-xs-4 col-xs-offset-1">
+            <label for="select1">Currency One</label>
+            <select id="select1" class="form-control" formControlName="curr1">
+                <option *ngFor="let currency of dataService.requests.supportedCurrencies" [value]="currency">
+                    {{currency}}
+                  </option>
+            </select>
+        </div>
+        <span class="col-xs-2 glyphicon glyphicon-sort" aria-hidden="true"></span>
+        <div class="col-xs-4">
+            <label for="select2">Currency Two</label>
+            <select id="select2" class="form-control" formControlName="curr2">
+              <option *ngFor="let currency of dataService.requests.supportedCurrencies" [value]="currency">
+                {{currency}}
+              </option>
+            </select>
+        </div>
+    </div>
+</form>
+<form [formGroup]="conversionForm">
+    <div class="row form-group" >
+        <div class="col-xs-4 col-xs-offset-1">
+            <input type="number" min="0" class="form-control" formControlName="value1" step=".1">
+        </div>
+        
+        <div class="col-xs-4 col-xs-offset-2">
+            <input type="number" min="0" class="form-control" formControlName="value2" step=".1">
+        </div>
+    </div>
+</form>
+
+
+        
