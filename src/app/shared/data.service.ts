@@ -14,8 +14,8 @@ export class DataService {
   
   constructor(public requests: RequestsService) { }
 
-  public getConversionRate(from: string, to: string): {'direct': number, 'reverse': number} {
-    return {direct: this.conversionRates[from][to], reverse: this.conversionRates[to][from]};
+  public getConversionRate(from: string, to: string): number {
+    return this.conversionRates[from][to];
   }
 
    public updateRates() {
