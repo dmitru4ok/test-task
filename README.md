@@ -1,27 +1,13 @@
-# Convertor
+## THE BUG
+# The bug, that occurs sometimes involves exchange rates to be similar for all the currecies happens due to the bug of external API. Sometimes, when request to that API is sent to return exchange rates for certain base, API returns results for the other currency base:
+<img width="1369" alt="image" src="https://github.com/dmitru4ok/test-task/assets/99320958/7cb8a759-6a99-4cce-b2ed-f97b65c61ab9">
+<img width="1284" alt="image" src="https://github.com/dmitru4ok/test-task/assets/99320958/fe494dab-b2a2-4618-9f0a-5f54b3bc541a">
+<img width="1347" alt="image" src="https://github.com/dmitru4ok/test-task/assets/99320958/9a52274e-9675-4b6c-8365-28e88331916a">
+<img width="1417" alt="image" src="https://github.com/dmitru4ok/test-task/assets/99320958/bcde2f0a-eedb-4e8a-a3e4-c1e8beebb63c">
+As you can see, the content of response is not changed, however, it should have. 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.5.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
