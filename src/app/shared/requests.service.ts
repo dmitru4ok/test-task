@@ -13,7 +13,7 @@ export class RequestsService {
   private newRates: {[currency: string]: Rates} = {};
   public fetching = true;
   public dataChanged = new Subject<void>();
-  private readonly digitPrecision = 2;
+  private readonly digitPrecision = 7;
   private readonly apiLink = 'https://api.fxratesapi.com/latest';
   private readonly queryList; 
   public readonly supportedCurrencies = ['USD', 'EUR', 'UAH', 'CAD', 'PLN', 'GBP', 'CHF', 'JPY', 'CNY'];
