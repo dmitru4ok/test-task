@@ -9,18 +9,19 @@ import { RequestsService } from '../shared/requests.service';
 })
 export class DataService {
 
-  private conversionRates: {[currency: string]: Rates} = {};
+  public conversionRates!: {[currency: string]: Rates} | null;
   
   
   constructor(public requests: RequestsService) { }
 
   public getConversionRate(from: string, to: string): number {
-    return this.conversionRates[from][to];
+    return this.conversionRates![from][to];
   }
 
-   public updateRates() {
-    const newRates = this.requests.updateCurrencyRates();
-    this.conversionRates = newRates;
-    // console.log(this.conversionRates);
+  public updateRates() {
+    this.conversionRates = null;
+    this.requests.updateCurrencyRates().subscribe((data) => {
+      this.conversionRates = data;
+    });
   }
 }
