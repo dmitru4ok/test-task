@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { Rates } from './rates.model';
-import { Subject, forkJoin, map } from 'rxjs';
+import { forkJoin, map } from 'rxjs';
 
 
 @Injectable({
@@ -11,10 +11,10 @@ import { Subject, forkJoin, map } from 'rxjs';
 export class RequestsService {
   private readonly digitPrecision = 7;
   private readonly apiLink = 'https://api.fxratesapi.com/latest';
-  private readonly queryList; 
+  private readonly queryList;
   public readonly supportedCurrencies = ['USD', 'EUR', 'UAH', 'CAD', 'PLN', 'GBP', 'CHF', 'JPY', 'CNY'];
 
-  constructor(private http: HttpClient) {
+  constructor(readonly http: HttpClient) {
     this.queryList = this.supportedCurrencies.join(',');
   }
 
@@ -38,7 +38,7 @@ export class RequestsService {
           result[this.supportedCurrencies[index]] = rate;
           return result;
         }, {});
-      }) 
+      })
     );
   }
 }

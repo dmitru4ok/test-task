@@ -11,15 +11,15 @@ import { Subscription, pairwise } from 'rxjs';
 })
 export class ConversionComponent implements OnDestroy{
 
-  private selectChangesSubscription: Subscription;
-  private value1Subscription: Subscription | undefined;
-  private value2Subscription: Subscription | undefined;
+  readonly selectChangesSubscription: Subscription;
+  readonly value1Subscription: Subscription | undefined;
+  readonly value2Subscription: Subscription | undefined;
 
   protected chosenRate = 1;
   protected reverseChosenRate = 1;
   protected form = new FormGroup({
     'curr1': new FormControl(null, Validators.required),
-    'curr2': new FormControl(null, Validators.required) 
+    'curr2': new FormControl(null, Validators.required)
   });
   protected conversionForm = new FormGroup({
     'value1': new FormControl(1, [Validators.required, Validators.min(0)]),
@@ -33,14 +33,14 @@ export class ConversionComponent implements OnDestroy{
         const curr2 = this.form.value.curr2 ? this.form.value.curr2 : 'UAH';
         this.chosenRate = dataService.getConversionRate(curr1 , curr2);
         this.reverseChosenRate = dataService.getConversionRate(curr2, curr1);
-        // this.conversionForm.patchValue({'value1': this.conversionForm.value.value1});
-        console.log(this.chosenRate, this.reverseChosenRate, prev, curr);
+
+
         if (prev.curr1 !== curr.curr1) {
           this.conversionForm.patchValue({'value2': this.conversionForm.value.value2});
         } else {
           this.conversionForm.patchValue({'value1': this.conversionForm.value.value1});
         }
-      } 
+      }
     }
     );
 
@@ -66,12 +66,9 @@ export class ConversionComponent implements OnDestroy{
     this.value2Subscription?.unsubscribe();
   }
 
-  // updateCurrency2(event: number) {
-  //   this.currency2 = event * this.chosenRates.direct;
-  // }
-
-  // updateCurrency1(event: number) {
-  //   this.currency1 = event * this.chosenRates.reverse;
-  // }
+  swapCurrencies() {
+    const {curr1, curr2} = this.form.getRawValue();
+    this.form.setValue({curr1: curr2, curr2: curr1}, {emitEvent: true});
+  }
 
 }
